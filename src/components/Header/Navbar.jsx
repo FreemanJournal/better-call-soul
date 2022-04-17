@@ -33,7 +33,7 @@ export default function Navbar() {
                     <>
                         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                             <div className="relative flex items-center justify-between h-16">
-                                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                                <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                                     {/* Mobile menu button*/}
                                     <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-slate-600 hover:bg-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                                         <span className="sr-only">Open main menu</span>
@@ -44,9 +44,10 @@ export default function Navbar() {
                                         )}
                                     </Disclosure.Button>
                                 </div>
+                                {/* Desktop Menu */}
                                 <div className=" flex-1 flex items-center justify-center sm:items-stretch sm:justify-between">
                                     <div className="flex-shrink-0 flex items-center">
-                                        <h1 className='text-emerald-400 font-bold cursor-pointer' onClick={()=>navigate('/')} >Better Call Soul</h1>
+                                        <h1 className='text-emerald-400 font-bold cursor-pointer' onClick={() => navigate('/')} >Better Call Soul</h1>
                                     </div>
                                     <div className="hidden sm:block sm:ml-6">
                                         <div className="flex space-x-4 my-5">
@@ -61,9 +62,8 @@ export default function Navbar() {
                                                     {item.name}
                                                 </NavLink>
                                             ))}
+                                            {/* Sign Out */}
                                             {user && <button
-
-                                                // style={({ isActive }) => isActive ? { color: "black" } : { color: "" }}
                                                 className='bg-transparent  cursor-pointer text-slate-400 hover:bg-gray-200 hover:text-slate-900 block px-3 py-2 rounded-md text-base font-medium'
                                                 onClick={() => signOut(auth)}
                                             >
@@ -75,19 +75,23 @@ export default function Navbar() {
 
                             </div>
                         </div>
-
-                        <Disclosure.Panel className="sm:hidden">
+                        {/* Dropdown Menu */}
+                        <Disclosure.Panel className="">
                             <div className="px-2 pt-2 pb-3 space-y-1">
-                                {navigation.map((item) => (
-                                    <Disclosure.Button
-                                        key={item.name}
-                                        as="NavLink"
-                                        to={item.href}
-                                        className='bg-transparent border cursor-pointer text-slate-500 hover:bg-gray-200 hover:text-slate-900 block px-3 py-2 rounded-md text-base font-medium'
-                                    >
-                                        {item.name}
-                                    </Disclosure.Button>
-                                ))}
+                                {navigation.map((item) => {
+                                    return (
+                                        <Disclosure.Button
+                                            key={item.name}
+                                            as={NavLink}
+                                            // onClick={() => navigate(item.href)}
+                                            to={item.href}
+
+                                            className='bg-transparent border cursor-pointer text-slate-500 hover:bg-gray-200 hover:text-slate-900 block px-3 py-2 rounded-md text-base font-medium'
+                                        >
+                                            {item.name}
+                                        </Disclosure.Button>
+                                    )
+                                })}
                             </div>
                         </Disclosure.Panel>
                     </>

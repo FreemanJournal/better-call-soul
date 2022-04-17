@@ -58,7 +58,7 @@ export default function Authorization({ signIn }) {
     <div className='w-96 md:w-4/12 mx-auto mt-16'>
       <ToastContainer />
       <div className="text-center">
-        <h2 className='text-4xl text-slate-600 font-semibold'>{signIn ? 'Welcome Back' : 'Welcome to Better Call Soul'}</h2>
+        <h2 className='text-2xl md:text-4xl text-slate-600 font-semibold'>{signIn ? 'Welcome Back' : 'Welcome to Better Call Soul'}</h2>
         <Link to={signIn ? '/signUp' : '/signIn'} className='my-3 block text-emerald-500'>{signIn ? 'Need an account?' : 'Have an account?'}</Link>
       </div>
       <form className="mt-8 space-y-6" onSubmit={onSubmitHandler}>

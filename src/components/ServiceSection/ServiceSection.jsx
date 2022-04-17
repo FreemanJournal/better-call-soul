@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom"
-import {BsFillArrowRightCircleFill} from 'react-icons/bs'
+import { Link, useNavigate } from "react-router-dom"
+import { BsFillArrowRightCircleFill } from 'react-icons/bs'
+// Service Data
 const services = [
     {
         id: 1,
@@ -40,6 +41,7 @@ export default function ServiceSection() {
                 <h2 className="text-4xl font-extrabold tracking-tight text-emerald-400">Services</h2>
 
                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                    {/* Services grid */}
                     {services.map((product) => (
                         <div key={product.id} className="group relative" onClick={() => navigate('/checkout')}>
                             <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
@@ -52,10 +54,8 @@ export default function ServiceSection() {
                             <div className="mt-4 flex justify-between">
                                 <div className="w-full">
                                     <h3 className="text-slate-600 md:text-2xl my-3 tracking-wider select-none">
-                                        <a href={product.href}>
-                                            <span aria-hidden="true" className="absolute inset-0" />
-                                            {product.name}
-                                        </a>
+                                        {product.name}
+                                      
                                     </h3>
                                     <p className=" text-slate-400 text-sm md:text-base my-2 tracking-wider select-none line-clamp-3">{product.des}</p>
                                 </div>
@@ -63,19 +63,13 @@ export default function ServiceSection() {
 
                             </div>
                             <button
-                               
+
                                 className="w-32 mt-5 flex justify-around items-center gap-1 py-2 px-4  text-sm font-medium rounded-md text-white  bg-emerald-500"
                                 onClick={() => navigate('/checkout')}
                             >
-                              <span>Details</span> <BsFillArrowRightCircleFill className="animate-bounce"/>
+                                <span>Details</span> <BsFillArrowRightCircleFill className="animate-bounce" />
                             </button>
-                            {/* <button
-                                type="button"
-                                className="w-32 mt-5 group flex justify-around items-center gap-1 py-2 px-4 border hover:border-transparent text-sm font-medium rounded-md text-white  bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
-                                onClick={() => navigate('/checkout')}
-                            >
-                              <span>Details</span> <BsFillArrowRightCircleFill className="animate-bounce"/>
-                            </button> */}
+                        
                         </div>
                     ))}
                 </div>

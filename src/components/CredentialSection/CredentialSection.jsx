@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { FaStar, FaQuoteLeft, FaAngleLeft, FaAngleRight } from 'react-icons/fa'
-import Slider from "react-slick";
-import "../../../node_modules/slick-carousel/slick/slick.css";
-import "../../../node_modules/slick-carousel/slick/slick-theme.css";
-import "./CredentialSection.css"
+import React, { useState } from 'react';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Slider from "react-slick";
+import "../../../node_modules/slick-carousel/slick/slick-theme.css";
+import "../../../node_modules/slick-carousel/slick/slick.css";
+import "./CredentialSection.css";
 
 const testimonial = [
     {

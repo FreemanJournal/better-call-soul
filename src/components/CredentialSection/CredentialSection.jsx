@@ -60,7 +60,7 @@ export default function CredentialSection() {
                     <div className="row">
                         <div className="w-full">
                             <div className="section-heading">
-                            <h2 className="text-4xl font-extrabold tracking-tight text-emerald-400">Feedback</h2>
+                            <h2 className="text-4xl font-extrabold tracking-tight border-b-2 pb-10  text-emerald-400">Feedback</h2>
 
                             </div>
                         </div>

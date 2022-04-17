@@ -36,14 +36,17 @@ export default function Authorization({ signIn }) {
       signInWithEmailAndPassword(email, password)
     } else {
       const { username, email, password } = formData
-      console.log('formData', formData);
+     
       setAuthProvider('signUp')
       createUserWithEmailAndPassword(email, password)
         .then(() => {
           setAuthProvider('updating')
           updateProfile({ displayName: username })
           sendEmailVerification()
-          setAuthProvider('verifying')
+          .then(()=>{
+
+            // setAuthProvider('verifying')
+          })
         })
     }
   }, [signIn]);

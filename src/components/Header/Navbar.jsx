@@ -84,12 +84,19 @@ export default function Navbar() {
                                             as={NavLink}
                                             to={item.href}
 
-                                            className='bg-transparent border cursor-pointer text-slate-500 hover:bg-gray-200 hover:text-slate-900 block px-3 py-2 rounded-md text-base font-medium'
+                                            className={`${item.current ? 'block' : "hidden"} bg-transparent border cursor-pointer text-slate-500 hover:bg-gray-200 hover:text-slate-900 px-3 py-2 rounded-md text-base font-medium`}
                                         >
                                             {item.name}
                                         </Disclosure.Button>
                                     )
                                 })}
+                                {/* Sign Out */}
+                                {user && <button
+                                    className='w-full bg-transparent border cursor-pointer text-slate-500 hover:bg-gray-200 hover:text-slate-900 px-3 py-2 rounded-md text-base font-medium'
+                                    onClick={() => signOut(auth)}
+                                >
+                                    SignOut
+                                </button>}
                             </div>
                         </Disclosure.Panel>
                     </>

@@ -38,7 +38,7 @@ export default function ServiceSection() {
     return (
         <div className="bg-white">
             <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                <h2 className="text-4xl font-extrabold tracking-tight text-emerald-400">Services</h2>
+                <h2 className="text-4xl font-extrabold border-b-2 pb-10 tracking-tight text-emerald-400">Services</h2>
 
                 <div className="mt-16 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                     {/* Services grid */}

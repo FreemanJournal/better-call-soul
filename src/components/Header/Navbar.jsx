@@ -20,7 +20,7 @@ export default function Navbar() {
     const navigation = [
         { name: 'Home', href: '/', current: true },
         { name: 'Blogs', href: '/blog', current: true },
-        { name: 'About', href: '/about', current: true },
+        { name: 'About Me', href: '/about', current: true },
         { name: 'Sign In', href: '/signIn', current: !display },
         { name: 'Sign Up', href: '/signUp', current: !display },
     ]

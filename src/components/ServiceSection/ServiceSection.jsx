@@ -41,7 +41,7 @@ export default function ServiceSection() {
 
                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                     {services.map((product) => (
-                        <div key={product.id} className="group relative">
+                        <div key={product.id} className="group relative" onClick={() => navigate('/checkout')}>
                             <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
                                 <img
                                     src={product.imageSrc}
@@ -63,12 +63,19 @@ export default function ServiceSection() {
 
                             </div>
                             <button
-                                type="button"
-                                className="w-32 mt-5 group flex justify-around items-center gap-1 py-2 px-4 border hover:border-transparent text-sm font-medium rounded-md text-white  bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
-                                onClick={() => navigate('/')}
+                               
+                                className="w-32 mt-5 flex justify-around items-center gap-1 py-2 px-4  text-sm font-medium rounded-md text-white  bg-emerald-500"
+                                onClick={() => navigate('/checkout')}
                             >
                               <span>Details</span> <BsFillArrowRightCircleFill className="animate-bounce"/>
                             </button>
+                            {/* <button
+                                type="button"
+                                className="w-32 mt-5 group flex justify-around items-center gap-1 py-2 px-4 border hover:border-transparent text-sm font-medium rounded-md text-white  bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+                                onClick={() => navigate('/checkout')}
+                            >
+                              <span>Details</span> <BsFillArrowRightCircleFill className="animate-bounce"/>
+                            </button> */}
                         </div>
                     ))}
                 </div>

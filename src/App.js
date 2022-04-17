@@ -1,11 +1,13 @@
 import './App.css';
-import Home from './pages/Home';
-
+import Routing from './routing/Routing';
+import 'react-toastify/dist/ReactToastify.css';
+import Navbar from './components/Header/Navbar';
 function App() {
   return (
-    <div className="">
-     <Home/>
-    </div>
+    <>
+      <Navbar/>
+     <Routing/>
+    </>
   );
 }
 

@@ -72,7 +72,7 @@ export default function CredentialSection() {
                                 <Slider ref={c => setSlider(c)} {...settings}>
                                     {
                                         testimonial.map((item, index) => (
-                                            <div className="flex items-center justify-center px-5 py-5 mt-16">
+                                            <div key={index} className="flex items-center justify-center px-5 py-5 mt-16">
                                                 <div className="w-full mx-auto rounded-lg bg-emerald-400 shadow-lg px-5 pt-5 pb-10 text-white">
                                                     <div className="w-full pt-1 text-center pb-5 -mt-16 mx-auto">
                                                         <Link to="/" className="block relative">

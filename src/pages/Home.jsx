@@ -8,7 +8,6 @@ import ServiceSection from '../components/ServiceSection/ServiceSection'
 export default function Home() {
   return (
     <div className='container mx-auto relative'>
-        <Navbar/>
         <BannerSection/>
         <ServiceSection/>
         <CredentialSection/>

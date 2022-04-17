@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { signOut } from 'firebase/auth'
@@ -20,7 +19,7 @@ export default function Navbar() {
 
     const navigation = [
         { name: 'Home', href: '/', current: true },
-        { name: 'Blogs', href: '/blogs', current: true },
+        { name: 'Blogs', href: '/blog', current: true },
         { name: 'About', href: '/about', current: true },
         { name: 'Sign In', href: '/signIn', current: !display },
         { name: 'Sign Up', href: '/signUp', current: !display },
@@ -83,7 +82,6 @@ export default function Navbar() {
                                         <Disclosure.Button
                                             key={item.name}
                                             as={NavLink}
-                                            // onClick={() => navigate(item.href)}
                                             to={item.href}
 
                                             className='bg-transparent border cursor-pointer text-slate-500 hover:bg-gray-200 hover:text-slate-900 block px-3 py-2 rounded-md text-base font-medium'

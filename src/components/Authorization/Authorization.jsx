@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useRef } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -7,9 +7,11 @@ import useAuthProviderHandler from '../../hooks/useAuthProviderHandler';
 import auth from '../../utilities/firebase.init';
 
 export default function Authorization({ signIn }) {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
-  const { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signInWithGoogle, errorMessage, authLoading, setAuthProvider } = useAuthProviderHandler()
+  const [sendEmailVerification, sending, verificationError] = useSendEmailVerification(auth);
+
+  const { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signInWithGoogle, setAuthProvider } = useAuthProviderHandler()
 
 
 
@@ -17,6 +19,9 @@ export default function Authorization({ signIn }) {
   const userName = useRef();
   const userEmail = useRef();
   const userPassword = useRef();
+
+
+
 
   const onSubmitHandler = useCallback((e) => {
     e.preventDefault();
@@ -28,35 +33,41 @@ export default function Authorization({ signIn }) {
     if (signIn) {
       const { email, password } = formData
       setAuthProvider('signIn')
-      signInWithEmailAndPassword(email, password) 
+      signInWithEmailAndPassword(email, password)
     } else {
       const { username, email, password } = formData
-      console.log('formData',formData);
+      console.log('formData', formData);
       setAuthProvider('signUp')
       createUserWithEmailAndPassword(email, password)
         .then(() => {
           setAuthProvider('updating')
           updateProfile({ displayName: username })
+          sendEmailVerification()
+          setAuthProvider('verifying')
         })
     }
   }, [signIn]);
 
   // Redirect
 
+
+
   const location = useLocation()
   let navigate = useNavigate();
 
   useEffect(() => {
     let from = location.state?.from?.pathname || "/";
-    user && navigate(from, { replace: true })
-  }, [user])
+    if (user && !sending) {
+      navigate(from, { replace: true })
+    }
+  }, [user, sending])
 
 
 
 
   return (
     <div className='w-96 md:w-4/12 mx-auto mt-16'>
-      <ToastContainer />
+      <ToastContainer pauseOnFocusLoss hideProgressBar={false} />
       <div className="text-center">
         <h2 className='text-2xl md:text-4xl text-slate-600 font-semibold'>{signIn ? 'Welcome Back' : 'Welcome to Better Call Soul'}</h2>
         <Link to={signIn ? '/signUp' : '/signIn'} className='my-3 block text-emerald-500'>{signIn ? 'Need an account?' : 'Have an account?'}</Link>
@@ -111,11 +122,13 @@ export default function Authorization({ signIn }) {
           </div>
 
         </div>
-        {/* <p>{errorMessage}</p> */}
+        {signIn && <p className='cursor-pointer text-emerald-400 hover:text-emerald-600' onClick={() => navigate("/reset")}>Forget Password ?</p>}
         <div>
           <button
             type="submit"
+
             className="w-24 group relative flex justify-center ml-auto py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-emerald-400 hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+
           >
             {signIn ? 'Sign In' : 'Sign Up'}
           </button>

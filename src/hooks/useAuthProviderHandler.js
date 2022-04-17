@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../utilities/firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -8,6 +8,7 @@ export default function useAuthProviderHandler() {
     const [authProvider,setAuthProvider] = useState()
     const [authLoading,setAuthLoading] = useState(false);
 
+    const [user, loading, error] = useAuthState(auth);
     const [signInWithGoogle, , googleSignInLoading, googleSignInError] = useSignInWithGoogle(auth);
     const [createUserWithEmailAndPassword, , signUpLoading, signUpError] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
@@ -53,13 +54,16 @@ export default function useAuthProviderHandler() {
             case 'updating':
                 messageHandler(updatingError)
                 break;
+            case 'verifying':
+                toast.info(`A verification email sent to ${user?.email}`)
+                break;
             case 'googleSignIn':
                 messageHandler(googleSignInError)
                 break;
             default:
                 messageHandler('')
         }
-    },[signInError, updatingError,signUpError,authProvider,googleSignInError])
+    },[signInError, updatingError,signUpError,authProvider,googleSignInError,user])
 
    
 

@@ -1,5 +1,3 @@
-
-
 export default function BannerSection() {
     return (
         <div className="bg-emerald-400 shadow-inner" style={{boxShadow: "inset 0 8px 8px -8px rgba(0, 0, 0, 0.3), inset 0 -8px 8px -8px rgba(0, 0, 0, 0.3)"}}>

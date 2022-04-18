@@ -26,10 +26,10 @@ export default function BlogPage() {
             </p>
             <p className="mt-2">
               <p className="text-base leading-6 text-gray-500">
-               Currently,I am using firebase for authentication purpose. <br />
-               There are also several other options like Auth0,Amazon Cognito,Mongodb,Heroku etc. available for authentication. <br />
-               1.Auth0 : it is a set of unified APIs and tools that instantly enables Single Sign On.We can integrate Auth0 with react. <br />
-               2.Amazon Cognito : I can create unique identities for my users through a number of public login providers (Amazon, Facebook, and Google) and also support unauthenticated guests. 
+                Currently,I am using firebase for authentication purpose. <br />
+                There are also several other options like Auth0,Amazon Cognito,Mongodb,Heroku etc. available for authentication. <br />
+                1.Auth0 : it is a set of unified APIs and tools that instantly enables Single Sign On.We can integrate Auth0 with react. <br />
+                2.Amazon Cognito : I can create unique identities for my users through a number of public login providers (Amazon, Facebook, and Google) and also support unauthenticated guests.
               </p>
             </p>
           </li>
@@ -51,7 +51,7 @@ export default function BlogPage() {
 
         </ul>
       </div>
-      <Footer/>
+      <Footer />
     </>
   )
 }

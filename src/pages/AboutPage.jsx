@@ -15,7 +15,7 @@ export default function AboutPage() {
             </p>
             <p className="mt-2">
               <p className="text-base leading-6 text-gray-500">
-                My goal is to become a person who will look at back 5 years and can say whatever I did ,I did with my whole heart.Currently I am doing web developing.I give my 110 percent effort into this. There are people who are more good at this game than me.But it does not bother me at all.Because I know that only thing is matter to me is that if I give my best to the work or not.
+                My goal is to become a person who will look at back after 5 years and can say whatever I did ,I did with my whole heart.Currently I am doing web developing.I give my 110 percent effort into this. There are people who are better at this game than me.But it does not bother me at all.Because I know that only thing is matter to me is that if I give my best to the work or not.
               </p>
             </p>
           </li>

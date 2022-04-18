@@ -7,9 +7,6 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import auth from '../../utilities/firebase.init'
 
 
-
-
-
 export default function Navbar() {
     const [user] = useAuthState(auth)
     const [display, setDisplay] = useState(false);

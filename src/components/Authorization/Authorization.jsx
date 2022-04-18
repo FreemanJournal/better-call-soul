@@ -2,12 +2,14 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import useAuthProviderHandler from '../../hooks/useAuthProviderHandler';
 import auth from '../../utilities/firebase.init';
 
 export default function Authorization({ signIn }) {
   const [user] = useAuthState(auth);
+
+  let navigate = useNavigate();
 
   const [sendEmailVerification, sending, verificationError] = useSendEmailVerification(auth);
 
@@ -44,8 +46,8 @@ export default function Authorization({ signIn }) {
           updateProfile({ displayName: username })
           sendEmailVerification()
           .then(()=>{
-
-            // setAuthProvider('verifying')
+            setTimeout(()=>toast.info(`A verification email sent to ${email}`),2000)
+            setAuthProvider('verifying')
           })
         })
     }
@@ -56,21 +58,18 @@ export default function Authorization({ signIn }) {
 
 
   const location = useLocation()
-  let navigate = useNavigate();
 
-  useEffect(() => {
-    let from = location.state?.from?.pathname || "/";
-    if (user && !sending) {
-      navigate(from, { replace: true })
-    }
-  }, [user, sending])
+  let from = location.state?.from?.pathname || "/";
+  if (user) {
+    navigate(from, { replace: true })
+  }
 
 
 
 
   return (
     <div className='w-96 md:w-4/12 mx-auto mt-16'>
-      <ToastContainer pauseOnFocusLoss hideProgressBar={false} />
+      <ToastContainer />
       <div className="text-center">
         <h2 className='text-2xl md:text-4xl text-slate-600 font-semibold'>{signIn ? 'Welcome Back' : 'Welcome to Better Call Soul'}</h2>
         <Link to={signIn ? '/signUp' : '/signIn'} className='my-3 block text-emerald-500'>{signIn ? 'Need an account?' : 'Have an account?'}</Link>

@@ -8,9 +8,12 @@ import auth from '../../utilities/firebase.init';
 
 export default function ResetPassword() {
     const [user, loading, error] = useAuthState(auth);
-    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail( auth  );
-    
-    const {  signInWithGoogle, setAuthProvider } = useAuthProviderHandler()
+    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
+
+    const location = useLocation();
+    let navigate = useNavigate();
+
+    const { signInWithGoogle, setAuthProvider } = useAuthProviderHandler()
 
     // Form Data
     const userEmail = useRef();
@@ -18,17 +21,22 @@ export default function ResetPassword() {
         e.preventDefault();
         const email = userEmail.current?.value
         sendPasswordResetEmail(email)
-        .then(()=>{
-            toast.info(`A reset email sent to ${email}`)
-        })
+            .then(() => {
+               setTimeout(()=> {
+                toast.info(`A reset email sent to ${email}`)
+              },2000)
+              
+            })
+            .then(()=>{
+                navigate('/signIn')
+            })
     }, []);
 
     // Redirect
 
 
 
-    const location = useLocation()
-    let navigate = useNavigate();
+
 
     useEffect(() => {
         let from = location.state?.from?.pathname || "/";
@@ -42,10 +50,9 @@ export default function ResetPassword() {
 
     return (
         <div className='w-96 md:w-4/12 mx-auto mt-16'>
-            <ToastContainer pauseOnFocusLoss/>
             <div className="text-center">
                 <h2 className='text-2xl md:text-4xl text-slate-600 font-semibold'>Reset Password</h2>
-               
+
             </div>
             <form className="mt-8 space-y-6" onSubmit={onSubmitHandler}>
                 <input type="hidden" name="remember" defaultValue="true" />

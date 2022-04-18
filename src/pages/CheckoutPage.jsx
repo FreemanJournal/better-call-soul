@@ -5,11 +5,13 @@ import Navbar from '../components/Header/Navbar'
 
 export default function CheckoutPage() {
   return (
-    <>
-     <ToastContainer />
-      
-        <h1 className='text-center mt-10 font-bold text-2xl'>CheckoutPage</h1>
-        {/* <Footer/> */}
-    </>
+    <div className=''>
+
+      <div className="min-h-screen">
+      <ToastContainer />
+      <h1 className='text-center mt-10 font-bold text-2xl'>CheckoutPage</h1>
+      </div>
+      <Footer />
+    </div>
   )
 }

@@ -4,9 +4,9 @@ import Footer from '../components/Footer/Footer'
 export default function BlogPage() {
   return (
     <>
-      <div className="max-w-screen-xl mx-auto p-8">
-        <h2 className="text-4xl pb-10 leading-9 font-extrabold tracking-tight text-emerald-400 border-b-2 mb-12">
-          FAQs
+      <div className="max-w-screen-xl mx-auto px-8 pb-8">
+        <h2 className="text-4xl  py-5 pl-3 leading-9 font-extrabold tracking-tight bg-emerald-400 text-white  mb-12" style={{boxShadow: "inset 0 8px 8px -8px rgba(0, 0, 0, 0.3), inset 0 -8px 8px -8px rgba(0, 0, 0, 0.3)"}}>
+         <span className='drop-shadow-md'> FAQs</span>
         </h2>
         <ul className="flex items-start gap-8 flex-wrap">
           <li className="w-full">

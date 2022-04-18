@@ -10,7 +10,7 @@
 * Receive order directly from site.
 * Show case your previous client reviews about you.
 
-## Technologies used in this project:
+## Technologies are used in this project:
 
 * React
 * React Router

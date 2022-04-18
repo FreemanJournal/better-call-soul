@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import auth from '../../utilities/firebase.init';
 
 export default function Authorization({ signIn }) {
   const [user] = useAuthState(auth);
+  const [prevLocation, setPrevLocation] = useState();
 
   let navigate = useNavigate();
 
@@ -38,7 +39,6 @@ export default function Authorization({ signIn }) {
       signInWithEmailAndPassword(email, password)
     } else {
       const { username, email, password } = formData
-     
       setAuthProvider('signUp')
       createUserWithEmailAndPassword(email, password)
         .then(() => {
@@ -58,23 +58,20 @@ export default function Authorization({ signIn }) {
 
 
   const location = useLocation()
-
- 
+  let from = prevLocation?.state?.from?.pathname || "/";
   useEffect(()=>{
-    let from = location.state?.from?.pathname || "/";
+    setPrevLocation(location)
     if (user) {
       navigate(from, { replace: true })
     }
   },[user])
-
-
 
   return (
     <div className='w-96 md:w-4/12 mx-auto mt-16'>
       <ToastContainer />
       <div className="text-center">
         <h2 className='text-2xl md:text-4xl text-slate-600 font-semibold'>{signIn ? 'Welcome Back' : 'Welcome to Better Call Soul'}</h2>
-        <Link to={signIn ? '/signUp' : '/signIn'} className='my-3 block text-emerald-500'>{signIn ? 'Need an account?' : 'Have an account?'}</Link>
+        <Link to={signIn ? '/signUp' : '/signIn'} state={{ from: prevLocation }} replace className='my-3 block text-emerald-500'>{signIn ? 'Need an account?' : 'Have an account?'}</Link>
       </div>
       <form className="mt-8 space-y-6" onSubmit={onSubmitHandler}>
         <input type="hidden" name="remember" defaultValue="true" />

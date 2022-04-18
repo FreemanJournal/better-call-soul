@@ -16,7 +16,7 @@ export default function Footer() {
 
           </span>
           <a className=" hover:text-primary-gray-20 font-bold hover:underline underline-offset-1" href="https://www.linkedin.com/in/md-ishaque-29b43612a">
-            BetterCallSoul.Inc
+            BetterCallSaul.Inc
           </a>
           <span>All Rights Reserved.</span>
 

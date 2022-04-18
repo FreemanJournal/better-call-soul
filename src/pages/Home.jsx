@@ -9,7 +9,7 @@ import auth from '../utilities/firebase.init'
 
 export default function Home() {
   const [user, loading, error] = useAuthState(auth);
-  console.log('loading',loading)
+  
 
   return (
     <div className='container mx-auto relative'>

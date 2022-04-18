@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../utilities/firebase.init';
-import { ToastContainer, toast } from 'react-toastify';
 
 export default function useAuthProviderHandler() {
     const [errorMessage, setErrorMessage] = useState()
@@ -16,7 +16,6 @@ export default function useAuthProviderHandler() {
 
     const messageHandler = (error) =>{
         const userMessage = error?.message
-        console.log('userMessage',userMessage);
         switch (userMessage) {
             case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
                 toast.error('Password should be at least 6 characters long.')

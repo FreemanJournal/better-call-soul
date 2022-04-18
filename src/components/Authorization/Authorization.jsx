@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -59,11 +59,13 @@ export default function Authorization({ signIn }) {
 
   const location = useLocation()
 
-  let from = location.state?.from?.pathname || "/";
-  if (user) {
-    navigate(from, { replace: true })
-  }
-
+ 
+  useEffect(()=>{
+    let from = location.state?.from?.pathname || "/";
+    if (user) {
+      navigate(from, { replace: true })
+    }
+  },[user])
 
 
 

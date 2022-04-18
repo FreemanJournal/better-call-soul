@@ -4,7 +4,6 @@ import { ToastContainer } from 'react-toastify'
 import BannerSection from '../components/BannerSection/BannerSection'
 import CredentialSection from '../components/CredentialSection/CredentialSection'
 import Footer from '../components/Footer/Footer'
-import Navbar from '../components/Header/Navbar'
 import ServiceSection from '../components/ServiceSection/ServiceSection'
 import auth from '../utilities/firebase.init'
 
